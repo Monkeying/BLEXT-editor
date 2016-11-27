@@ -1,0 +1,4 @@
+html, body, body>div, textarea {
+    height: 100%;
+    width: 100%;
+}

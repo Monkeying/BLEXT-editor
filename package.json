@@ -1,0 +1,22 @@
+{
+  "name": "my-markdawn-editor",
+  "version": "1.0.0",
+  "description": "A minimal markdown editor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "markdown",
+    "editor",
+    "Election"
+  ],
+  "author": "seagullbird",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-editor-context-menu": "^1.1.1",
+    "electron": "^1.4.1",
+    "marked": "^0.3.6"
+  }
+}

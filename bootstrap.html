@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>myMDE</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-markdown.min.css" rel="stylesheet">
+</head>
+
+<body>
+<form>
+    <textarea name="plaintext" id = "plaintext" ></textarea>
+    <label class="checkbox">
+      <input name="publish" type="checkbox"> Publish
+    </label>
+    <hr/>
+    <button type="submit" class="btn">Submit</button>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/marked.min.js"></script>
+    <script src="js/bootstrap-markdown.js"></script>
+	<script src="https://use.fontawesome.com/ab291d07ba.js"></script>
+	<script>
+	window.onload = function() {
+		$("#plaintext").markdown({
+			autofocus:true,
+			iconlibrary:'fa', 
+			})}
+    </script>
+  </form> 
+
+</body>
+</html>
