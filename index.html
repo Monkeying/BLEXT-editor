@@ -8,12 +8,16 @@
     <link href="css/index.css" rel="stylesheet">
     <link href="css/bootstrap-markdown.min.css" rel="stylesheet">
     <link href="css/sidebar.min.css" rel="stylesheet">
+
+    <script src="https://use.fontawesome.com/ab291d07ba.js"></script>
 </head>
 
 <body>
     <div class="wrapper jsc-sidebar-content jsc-sidebar-pulled" style="height: 100%">
-        <nav>
-            <a href="#" class="icon-menu link-menu jsc-sidebar-trigger">Trigger</a>
+        <nav style="background: #F5F5F5;">
+            <div style="padding-left: 8px;">
+                <i class="fa fa-bars jsc-sidebar-trigger link-menu" aria-hidden="true"></i>                
+            </div>
         </nav>
         <textarea name="plainText" id="plainText" placeholder="Write your Markdown content here"></textarea>
     </div>
@@ -29,7 +33,7 @@
     <script src="js/marked.min.js"></script>
     <script src="js/sidebar.min.js"></script>
     <script src="js/bootstrap-markdown.js"></script>
-    <script src="https://use.fontawesome.com/ab291d07ba.js"></script>
+    
     <script>
     window.onload = function() {
         $("#plainText").markdown({
