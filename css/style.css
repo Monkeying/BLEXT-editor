@@ -1,8 +1,14 @@
-html, body, body>div, textarea {
-    height: 100%;
+html {
+    height: 1000px;
     width: 100%;
+    position: absolute;
 }
 
-#plainText {
+body {
 	height: 100%;
+}
+
+.top-nav {
+	background: #F5F5F5;
+	padding-left: 8px;
 }

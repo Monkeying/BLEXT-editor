@@ -52,8 +52,9 @@ footer {
 .wrapper {
   width: 100%;
   box-sizing: border-box;
-  border-top: 2px solid #6c6c6c;
-  background-color: #fefefe; }
+  background-color: #fefefe;
+  height: 100%;
+}
 
 .link-menu {
   font-size: 2.2rem; }
