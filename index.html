@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>myMDE</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/bootstrap-markdown.min.css" rel="stylesheet">
+    <link href="css/sidebar.min.css" rel="stylesheet">
+
+    <script src="https://use.fontawesome.com/ab291d07ba.js"></script>
+</head>
+
+<body>
+    <div class="wrapper jsc-sidebar-content jsc-sidebar-pulled" style="height: 100%">
+        <nav style="background: #F5F5F5;">
+            <div style="padding-left: 8px;">
+                <i class="fa fa-bars jsc-sidebar-trigger link-menu" aria-hidden="true"></i>                
+            </div>
+        </nav>
+        <textarea name="plainText" id="plainText" placeholder="Write your Markdown content here"></textarea>
+    </div>
+    <nav class="sidebar jsc-sidebar" id="jsi-nav" data-sidebar-options="">
+        <ul class="sidebar-list">
+            <li><a href="#" class="current">Sign In</a></li>
+            <li><a href="#">Save to Local</a></li>
+            <li><a href="#">Options</a></li>
+        </ul>
+    </nav>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/marked.min.js"></script>
+    <script src="js/sidebar.min.js"></script>
+    <script src="js/bootstrap-markdown.js"></script>
+    
+    <script>
+    window.onload = function() {
+        $("#plainText").markdown({
+            autofocus: true,
+            iconlibrary: 'fa'
+        });
+    }
+    </script>
+    <script>
+    $('#jsi-nav').sidebar({
+        trigger: '.jsc-sidebar-trigger',
+        scrollbarDisplay: true,
+        pullCb: function() {
+            console.log('pull');
+        },
+        pushCb: function() {
+            console.log('push');
+        }
+    });
+    </script>
+</body>
+
+</html>
