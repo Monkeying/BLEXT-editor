@@ -35,87 +35,36 @@
 						<label for="exampleInputPassword1">Password</label>
 						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 					</div>
-					<button type="button" class="btn btn-default"onclick="requestAuth()">提交</button>
+					<button type="button" class="btn btn-default"onclick="reqAuth()">提交</button>
 					<script>
-					function requestAuth(){
-						var request = new ActiveXObject('Microsoft.XMLHTTP'); // 新建Microsoft.XMLHTTP对象
-
-						request.onreadystatechange = function () { // 状态发生变化时，函数被回调
-							if (request.readyState === 4) { // 成功完成
-								// 判断响应结果:
-								if (request.status === 200) {
-									// 成功，通过responseText拿到响应的文本:
-									return success(request.responseText);
-								} else {
-									// 失败，根据响应码判断失败原因:
-									return fail(request.status);
-								}
-							} else {
-								// HTTP请求还在继续...
-							}
+						/*function decoding(data){
+							//enable to show data with selectedbyId blogList
+							$(data).appendTo("#blogList");
+							alert(JSON.stringify(data));
+						}*/
+						function reqAuth(){
+							$.ajax({
+								header:{
+									'Authorization': 'Basic ' + btoa('380554381@qq.com:cat')
+								},
+								url:"http://127.0.0.1/contactsList.html",
+								datatype:'json',
+								
+								}).done(function(data){
+									$(data).appendTo("#blogList");
+									alert(JSON.stringify(data));
+								});			
 						}
-						request.ajax({
-							xhrFields:{
-								withCredentials:true
-							},
-							header:{
-								'Authorization': 'Basic ' + btoa('380554381@qq.com:cat')
-							}
-						})
-
-						// 发送请求:
-						request.open('GET', 'https://blext.herokuapp.com/api/v1.0/token/');
-						request.send();					
-					}
+						
 					</script>
 				</form>
 			</li>
-            <li><a href="#date_data" data-toggle="collapse" >View History</a></li>
-			<div id="date_data" class="sidebar-collapse collapse" role="menu" style="padding-left: 5px; padding-right:5px;">
-				<div class="dropdown">
-					<button id="dYearLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Year
-						<span class="caret"></span>
-						<ul class="dropdown-menu"  role="menu1" aria-labelledby="dMonthLabel">
-							<li><a href="#day">1</a></li>
-							<li><a href="#day">2</a></li>
-							<li><a href="#day">3</a></li>
-							<li><a href="#day">4</a></li>
-							<li><a href="#day">5</a></li>
-							<li><a href="#day">6</a></li>
-							<li><a href="#day">7</a></li>
-							<li><a href="#day">8</a></li>
-							<li><a href="#day">9</a></li>
-							<li><a href="#day">10</a></li>
-							<li><a href="#day">11</a></li>
-							<li><a href="#day">12</a></li>
-						</ul>	
-					</button>
-	
-					<button id="dMonthLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Month
-						<span class="caret"></span>
-					</button>
-					
-					<ul class="dropdown-menu"  role="menu2" aria-labelledby="dYearLabel">
-						<li><a href="#day">2</a></li>
-						<li><a href="#day">2</a></li>
-						<li><a href="#day">3</a></li>
-						<li><a href="#day">4</a></li>
-						<li><a href="#day">5</a></li>
-						<li><a href="#day">6</a></li>
-						<li><a href="#day">7</a></li>
-						<li><a href="#day">8</a></li>
-						<li><a href="#day">9</a></li>
-						<li><a href="#day">10</a></li>
-						<li><a href="#day">11</a></li>
-						<li><a href="#day">12</a></li>
-					</ul>
-					<button id="viewAll" type="button">
-						ALL
-					</button>
-				</div>
-			</div>
+            <li><a href="#blogList" data-toggle="collapse" >View History</a></li>
+			<li>
+					<div href="#" id="blogList" class="sidebar-collapse collapse">
+					<!--put the list of blogs here-->
+					</div>
+			</li>
             <li><a href="#" data-toggle="collapse" >Options</a></li>
         </ul>
     </nav>
