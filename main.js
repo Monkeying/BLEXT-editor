@@ -7,6 +7,8 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 var Menu = electron.Menu;
 var dialog = electron.dialog;
+// disable zooming
+// require('web-frame').setZoomLevelLimits(1, 1);
 
 const path = require('path');
 const url = require('url');
