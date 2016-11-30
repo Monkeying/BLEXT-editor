@@ -7,11 +7,12 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 var Menu = electron.Menu;
 var dialog = electron.dialog;
-// disable zooming
-// require('web-frame').setZoomLevelLimits(1, 1);
+
+var LoginWindow = null;
 
 const path = require('path');
 const url = require('url');
+const {shell} = require('electron'); 
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -19,14 +20,16 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1200, height: 600, frame: false, resizable: false})
+  mainWindow = new BrowserWindow({width: 1200, height: 600, frame: true, resizable: false})
+
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  })
+)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
@@ -96,3 +99,24 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+var ipc = require("ipc")
+
+var LoginWindow = null;
+ipc.on("Login_Windows",function(){
+    if (LoginWindow) {
+		alert("2");
+        return;
+    }
+
+    LoginWindow = new BrowserWindow({
+        frame: false,
+        height: 200,
+        resizable: false,
+        width: 200
+    });
+    LoginWindow.loadUrl('file://' + __dirname + '/app/Login.html');
+
+    LoginWindow.on('closed', function () {
+        settingsWindow = null;
+    });	
+})

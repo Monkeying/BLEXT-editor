@@ -24,9 +24,48 @@
     </div>
     <nav class="sidebar jsc-sidebar" id="jsi-nav" data-sidebar-options="">
         <ul class="sidebar-list">
-            <li><a href="#" class="current">Sign In</a></li>
-            <li><a href="#">Save to Local</a></li>
-            <li><a href="#">Options</a></li>
+            <li><a href="#SignIn" data-toggle="collapse"  class="current">Sign In</a></li>
+			<li>
+				<form id="SignIn" " class="sidebar-collapse collapse" role="form" style="padding-left: 5px; padding-right:5px;">
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					</div>
+					<button type="button" class="btn btn-default"onclick="reqAuth()">提交</button>
+					<script>
+						/*function decoding(data){
+							//enable to show data with selectedbyId blogList
+							$(data).appendTo("#blogList");
+							alert(JSON.stringify(data));
+						}*/
+						function reqAuth(){
+							$.ajax({
+								header:{
+									'Authorization': 'Basic ' + btoa('380554381@qq.com:cat')
+								},
+								url:"http://127.0.0.1/contactsList.html",
+								datatype:'json',
+								
+								}).done(function(data){
+									$(data).appendTo("#blogList");
+									alert(JSON.stringify(data));
+								});			
+						}
+						
+					</script>
+				</form>
+			</li>
+            <li><a href="#blogList" data-toggle="collapse" >View History</a></li>
+			<li>
+					<div href="#" id="blogList" class="sidebar-collapse collapse">
+					<!--put the list of blogs here-->
+					</div>
+			</li>
+            <li><a href="#" data-toggle="collapse" >Options</a></li>
         </ul>
     </nav>
     <script src="js/jquery.min.js"></script>
