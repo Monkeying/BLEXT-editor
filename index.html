@@ -20,7 +20,7 @@
                 <i class="fa fa-bars jsc-sidebar-trigger link-menu" aria-hidden="true"></i>                
             </div>
         </nav>
-        <textarea name="plainText" id="plainText" placeholder="Write your Markdown content here" style="outline: none;"></textarea>
+        <textarea name="plainText" id="plainText"  placeholder="Write your Markdown content here" style="outline: none;"></textarea>
     </div>
     <nav class="sidebar jsc-sidebar" id="jsi-nav" data-sidebar-options="">
         <ul class="sidebar-list">
@@ -49,11 +49,16 @@
 								},
 								url:"http://127.0.0.1/contactsList.html",
 								datatype:'json',
-								
-								}).done(function(data){
+								success:function(e,data){
+									alert($("textarea#plainText").value.constructor.Name);
+									$("textarea#plainText").fn.markdown.setContent(JSON.stringify(data));
 									$(data).appendTo("#blogList");
 									alert(JSON.stringify(data));
-								});			
+								}	
+								})/*.done(function(data){
+									$(data).appendTo("#blogList");
+									alert(JSON.stringify(data));
+								});	*/		
 						}
 						
 					</script>
@@ -75,12 +80,27 @@
     <script src="js/bootstrap-markdown.js"></script>
     
     <script>
-    window.onload = function() {
+    window.onload = function () {
         $("#plainText").markdown({
             autofocus: true,
             iconlibrary: 'fa',
             height: 'editor',
-            'fullscreen': false
+            'fullscreen': false,
+			onPreview: function(e){
+				alert(e.tagName);
+			}
+			/*
+			additionalButtons:[
+			[{
+				name:"Save to Local",
+				icon:"fa fa-bars",
+				callback:function(e){
+					var JSONStorage = require('node-localstorage').JSONStorage;
+						var storageLocation = app.getPath('LocalBlogs');
+						global.nodeStorage = new JSONStorage(storageLocation);
+				}
+			}]
+			*/
         });
 
         $('#jsi-nav').sidebar({
