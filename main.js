@@ -7,6 +7,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 var Menu = electron.Menu;
 var dialog = electron.dialog;
+
 var LoginWindow = null;
 
 const path = require('path');
