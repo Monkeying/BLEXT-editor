@@ -12,3 +12,8 @@ body {
 	background: #F5F5F5;
 	padding-left: 8px;
 }
+
+.header {
+	padding-left: 20px;
+	padding-right: 20px;
+}
