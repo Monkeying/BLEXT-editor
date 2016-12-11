@@ -28,39 +28,21 @@
 			<li>
 				<form id="SignIn" " class="sidebar-collapse collapse" role="form" style="padding-left: 5px; padding-right:5px;">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+						<label for="userEmail">Email address</label>
+						<input type="email" class="form-control" id="userEmail" placeholder="Enter email">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						<label text="abcdef" id="lab1" onclick="add();"></label>
+						<label for="userPassword">Password</label>
+						<input type="password" class="form-control" id="userPassword" placeholder="Password">
 					</div>
-					<button type="button" class="btn btn-default"onclick="reqAuth()">提交</button>
+					<button type="button" class="btn btn-default"onclick="userValidate()">提交</button>
 					<script>
 						/*function decoding(data){
 							//enable to show data with selectedbyId blogList
 							$(data).appendTo("#blogList");
 							alert(JSON.stringify(data));
 						}*/
-						function reqAuth(){
-							$.ajax({
-								header:{
-									'Authorization': 'Basic ' + btoa('380554381@qq.com:cat')
-								},
-								url:"http://127.0.0.1/contactsList.html",
-								datatype:'json',
-								success:function(e,data){
-									alert($("textarea#plainText").value.constructor.Name);
-									$("textarea#plainText").fn.markdown.setContent(JSON.stringify(data));
-									$(data).appendTo("#blogList");
-									alert(JSON.stringify(data));
-								}	
-								})/*.done(function(data){
-									$(data).appendTo("#blogList");
-									alert(JSON.stringify(data));
-								});	*/		
-						}
-						
 					</script>
 				</form>
 			</li>
@@ -71,6 +53,7 @@
 					</div>
 			</li>
             <li><a href="#" data-toggle="collapse" >Options</a></li>
+			
         </ul>
     </nav>
     <script src="js/jquery.min.js"></script>
@@ -78,50 +61,7 @@
     <script src="js/marked.min.js"></script>
     <script src="js/sidebar.min.js"></script>
     <script src="js/bootstrap-markdown.js"></script>
-    
-    <script>
-    $("#plainText").markdown({
-            autofocus: true,
-            iconlibrary: 'fa',
-            height: 'editor',
-            'fullscreen': false,
-			onPreview: function(e){
-				alert(e.tagName);
-			}
-			/*
-			additionalButtons:[
-			[{
-				name:"Save to Local",
-				icon:"fa fa-bars",
-				callback:function(e){
-					var JSONStorage = require('node-localstorage').JSONStorage;
-						var storageLocation = app.getPath('LocalBlogs');
-						global.nodeStorage = new JSONStorage(storageLocation);
-				}
-			}]
-			*/
-        });
-
-        $('#jsi-nav').sidebar({
-            trigger: '.jsc-sidebar-trigger',
-            scrollbarDisplay: true,
-            pullCb: function() {
-                console.log('pull');
-            },
-            pushCb: function() {
-                console.log('push');
-            }
-       });
-
-
-        function reset_size() {
-            $('.md-editor').height($('.wrapper').height() - $('.top-nav').outerHeight());
-            $('textarea').height($('.md-editor').height() - $('.md-header').outerHeight());  
-        };
-        reset_size();
-        window.onresize = reset_size;
-    </script>
-    
+	<script src="js/index.js"></script>
 </body>
 
 </html>
