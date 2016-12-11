@@ -16,9 +16,23 @@
 <body>
     <div class="wrapper jsc-sidebar-content jsc-sidebar-pulled">
         <nav class="top-nav">
-            <div>
-                <i class="fa fa-bars jsc-sidebar-trigger link-menu" aria-hidden="true"></i>                
-            </div>
+
+            	<div class="row">
+                	<div class="col-md-1">
+                		<i class="fa fa-bars jsc-sidebar-trigger link-menu" aria-hidden="true"></i>
+                	</div>
+                	<div class="col-md-1 col-md-offset-9">
+                		<button class="btn">
+                			Save draft
+                		</button>
+                	</div>
+                	<div class="col-md-1">
+                		<button class="btn">
+                			Publish
+                		</button>
+                	</div>                
+            	</div>
+
         </nav>
         <textarea name="plainText" id="plainText"  placeholder="Write your Markdown content here" style="outline: none;"></textarea>
     </div>
